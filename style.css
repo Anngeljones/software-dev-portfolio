@@ -1,0 +1,38 @@
+body {
+    /* Font family and basic background/text colors are already set in HTML */
+    font-family: 'Inter', sans-serif;
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: #58a6ff; /* Primary accent color */
+}
+
+/* Blue underline effect for section titles */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #58a6ff;
+    border-radius: 9999px;
+}
+
+/* Centering the underline on small screens using a media query */
+@media (max-width: 640px) {
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Shared styling for skill badges (using Tailwind directives) */
+.skill-badge {
+    /* Applies shared padding, border, and hover effects to all skill spans */
+    @apply px-3 py-1 text-sm font-medium rounded-full transition duration-200 hover:scale-[1.05] shadow-md;
+}
