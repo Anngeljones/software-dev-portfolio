@@ -5,31 +5,33 @@ const projects = [
         title: "Explain It AI",
         description: "simple web application designed to help tech fellows and other beginners understand complex technical documentation and jargon. It leverages the Google Gemini AI to provide simplified summaries and explanations of technical terms.",
         tech: ["Html", "Node.js", "Css", "Java script","Google Gemini Api"],
-        githubLink: "https://anngeljones.github.io/3MTT-ExplainIt-AI/"
-       
+        githubLink: "https://anngeljones.github.io/3MTT-ExplainIt-AI/",
+        liveLink: "https://anngeljones.github.io/3MTT-ExplainIt-AI/"
     },
     {
         id: 2,
         title: "Business app landing page", 
         description: "A simple but appealing business landing page.",
         tech: ["Html", "Css"],
-        githubLink: "https://anngeljones.github.io/business-app-landing-page/"
+        githubLink: "https://anngeljones.github.io/business-app-landing-page/",
+        liveLink: "https://anngeljones.github.io/business-app-landing-page/"
     },
     {
         id: 3,
         title: "Calculator",
         description: "A basic calculator app",
         tech: ["Html", "Css", "Java script"],
-        githubLink: "https://anngeljones.github.io/basic-calculator-app/" 
+        githubLink: "https://anngeljones.github.io/basic-calculator-app/",
+        livelink: "https://anngeljones.github.io/basic-calculator-app/"
     }
 ];
 
 // --- 2. RENDER FUNCTION (Creates HTML for projects) ---
-function renderProjects() { 
-    // assuming the project cards are intended to be rendered inside the projects section.
-    // If you plan to add a nested container, change this back to 'projects-container' and update your HTML.
-    const container = document.getElementById('projects'); 
-    if (!container) return;
+function renderProjects() {
+    // Assuming you are using an element with the ID 'project-cards-wrapper' 
+    // or a grid inside the #projects section.
+    const projectsWrapper = document.querySelector('#project-cards-wrapper') || document.querySelector('#projects .grid');
+    if (!projectsWrapper) return;
 
     // Maps the JS array into HTML project cards using template literals
     const projectCardsHTML = projects.map(project => `
@@ -42,7 +44,9 @@ function renderProjects() {
             </div>
 
             <div class="flex space-x-4 mt-auto">
-
+                <a href="${project.liveLink}" target="_blank" class="flex-1 text-center py-2 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition duration-200">
+                    Live Demo
+                </a>
                 <a href="${project.githubLink}" target="_blank" class="flex-1 text-center py-2 text-sm font-medium rounded-lg text-indigo-400 border border-indigo-500 hover:bg-indigo-900/50 transition duration-200">
                     GitHub
                 </a>
@@ -50,18 +54,7 @@ function renderProjects() {
         </div>
     `).join('');
     
-    // To cleanly inject only the cards, you'd typically have an empty div inside your <section id="projects">.
-    // For this fix, I'll assume a container div is present and update its innerHTML.
-    // NOTE: For the project cards to render, your HTML's <section id="projects"> must contain an empty container element, e.g., <div id="project-cards-wrapper">.
-    // I will adjust the selector again to reflect a common practice of using a wrapper ID.
-    const projectsWrapper = document.querySelector('#projects .grid'); // Assuming a grid element inside the section
-
-    if (projectsWrapper) {
-        projectsWrapper.innerHTML = projectCardsHTML;
-    } else {
-        // Fallback for previous HTML structure where project cards were injected directly into the section
-        container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">${projectCardsHTML}</div>`;
-    }
+    projectsWrapper.innerHTML = projectCardsHTML;
 }
 
 // --- 3. EVENT HANDLERS ---
@@ -89,4 +82,5 @@ function setupContactForm() {
     // Note: The HTML provided in the previous turn did not include an actual contact form 
     // with id="contact-form" or a status message element. This function will only run 
     // if those elements are added to the HTML.
+
 
