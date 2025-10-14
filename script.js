@@ -28,31 +28,46 @@ const projects = [
 
 // --- 2. RENDER FUNCTION (Creates HTML for projects) ---
 function renderProjects() {
-    // Assuming you are using an element with the ID 'project-cards-wrapper' 
-    // or a grid inside the #projects section.
     const projectsWrapper = document.querySelector('#project-cards-wrapper') || document.querySelector('#projects .grid');
     if (!projectsWrapper) return;
 
-    // Maps the JS array into HTML project cards using template literals
-    const projectCardsHTML = projects.map(project => `
-        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-indigo-500 transition duration-300 transform hover:shadow-indigo-500/50 shadow-xl">
-            <h3 class="text-xl font-bold text-white mb-3">${project.title}</h3>
-            <p class="text-gray-400 mb-4">${project.description}</p>
-           
-            <div class="flex flex-wrap gap-2 mb-4">
-                ${project.tech.map(t => `<span class="px-2 py-1 text-xs font-medium rounded-full bg-gray-700 text-indigo-400">${t}</span>`).join('')}
-            </div>
+    const projectCardsHTML = projects.map(project => {
+        // Ensure links are present and start with 'http' for safety.
+        // If not valid, use '#' as a fallback, but the JS below will disable the link.
+        const demoHref = project.liveLink && project.liveLink.startsWith('http') ? project.liveLink : '#';
+        const githubHref = project.githubLink && project.githubLink.startsWith('http') ? project.githubLink : '#';
 
-            <div class="flex space-x-4 mt-auto">
-                <a href="${project.liveLink}" target="_blank" class="flex-1 text-center py-2 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition duration-200">
-                    Live Demo
-                </a>
-                <a href="${project.githubLink}" target="_blank" class="flex-1 text-center py-2 text-sm font-medium rounded-lg text-indigo-400 border border-indigo-500 hover:bg-indigo-900/50 transition duration-200">
-                    GitHub
-                </a>
+        // Check if the link is the invalid fallback '#'
+        const isDemoValid = demoHref !== '#';
+        const isGithubValid = githubHref !== '#';
+
+        return `
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-indigo-500 transition duration-300 transform hover:shadow-indigo-500/50 shadow-xl">
+                <h3 class="text-xl font-bold text-white mb-3">${project.title}</h3>
+                <p class="text-gray-400 mb-4">${project.description}</p>
+               
+                <div class="flex flex-wrap gap-2 mb-4">
+                    ${project.tech.map(t => `<span class="px-2 py-1 text-xs font-medium rounded-full bg-gray-700 text-indigo-400">${t}</span>`).join('')}
+                </div>
+
+                <div class="flex space-x-4 mt-auto">
+                    <a href="${demoHref}" target="_blank" 
+                       class="flex-1 text-center py-2 text-sm font-medium rounded-lg 
+                              ${isDemoValid ? 'text-white bg-indigo-600 hover:bg-indigo-700' : 'text-gray-500 bg-gray-700 cursor-not-allowed'}" 
+                              ${isDemoValid ? '' : 'onclick="return false;"'}>
+                        Live Demo
+                    </a>
+                    
+                    <a href="${githubHref}" target="_blank" 
+                       class="flex-1 text-center py-2 text-sm font-medium rounded-lg 
+                              ${isGithubValid ? 'text-indigo-400 border border-indigo-500 hover:bg-indigo-900/50' : 'text-gray-500 border border-gray-700 cursor-not-allowed'}"
+                              ${isGithubValid ? '' : 'onclick="return false;"'}>
+                        GitHub
+                    </a>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
     
     projectsWrapper.innerHTML = projectCardsHTML;
 }
@@ -82,5 +97,6 @@ function setupContactForm() {
     // Note: The HTML provided in the previous turn did not include an actual contact form 
     // with id="contact-form" or a status message element. This function will only run 
     // if those elements are added to the HTML.
+
 
 
