@@ -9,7 +9,6 @@ const projects = [
        
     },
     {
-        // FIX: Added closing quote and comma to 'title'
         id: 2,
         title: "Business app landing page", 
         description: "A simple but appealing business landing page.",
@@ -21,14 +20,12 @@ const projects = [
         title: "Calculator",
         description: "A basic calculator app",
         tech: ["Html", "Css", "Java script"],
-        // FIX: Updated to a unique, more relevant link (assuming a different project)
         githubLink: "https://anngeljones.github.io/basic-calculator-app/" 
     }
 ];
 
 // --- 2. RENDER FUNCTION (Creates HTML for projects) ---
-function renderProjects() {
-    // FIX: Changed selector to 'projects' to match your HTML section ID from the previous request, 
+function renderProjects() { 
     // assuming the project cards are intended to be rendered inside the projects section.
     // If you plan to add a nested container, change this back to 'projects-container' and update your HTML.
     const container = document.getElementById('projects'); 
@@ -92,3 +89,4 @@ function setupContactForm() {
     // Note: The HTML provided in the previous turn did not include an actual contact form 
     // with id="contact-form" or a status message element. This function will only run 
     // if those elements are added to the HTML.
+
