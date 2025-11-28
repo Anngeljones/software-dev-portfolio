@@ -55,8 +55,7 @@
         }
     </style>
 </head>
-<body class="bg-[#0d1117]">
-    <header>
+<body class="bg-[#0d1117]"> <header>
         <nav class="bg-[#161b22] border-b border-gray-700 fixed w-full z-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
@@ -106,6 +105,96 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading">About Me</h2>
                 <div class="text-lg space-y-4">
+                    <p>I am a passionate software developer with a focus on creating beautiful and functional web experiences.</p>
+                    <p>My journey into development began with a fascination for how simple lines of code could transform into powerful applications used by millions.</p>
+                    <p>When I'm not coding, you can find me exploring new technologies or enjoying a good cup of coffee.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 bg-[#0d1117] text-gray-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading">My Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="skill-card">HTML & CSS</div>
+                    <div class="skill-card">JavaScript</div>
+                    <div class="skill-card">React</div>
+                    <div class="skill-card">Tailwind CSS</div>
+                    <div class="skill-card">Node.js</div>
+                    <div class="skill-card">Express</div>
+                    <div class="skill-card">Databases</div>
+                    <div class="skill-card">Git & GitHub</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 bg-[#161b22] text-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading">Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card">
+                        <h3 class="text-xl font-bold mb-2 text-indigo-400">Explain-it Ai</h3>
+                        <p class="text-gray-400">A web application built with html,css,java and Node.js.</p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="https://anngeljones.github.io/3MTT-ExplainIt-AI/" target="_blank" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="text-xl font-bold mb-2 text-indigo-400">Business landing page</h3>
+                        <p class="text-gray-400">A responsive landing page.</p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="https://anngeljones.github.io/business-app-landing-page/" target="_blank" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="text-xl font-bold mb-2 text-indigo-400">calculator app</h3>
+                        <p class="text-gray-400">A non-complex calculator.</p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="https://anngeljones.github.io/my-calculator/" target="_blank" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-[#0d1117] text-gray-200">
+            <div class="max-w-2xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading">Get In Touch</h2>
+                <p class="text-xl text-gray-400 mb-8">
+                    I am currently open to new opportunities. Whether you have a question or just want to say hi, my inbox is always open!
+                </p>
+                <a href="mailto:angelchristabel53@gmail.com" class="inline-block px-10 py-4 border-2 border-indigo-400 text-indigo-400 font-bold rounded-lg hover:bg-indigo-400 hover:text-white transition duration-300">
+                    Say Hello
+                </a>
+            </div>
+        </section>
+    </main> <footer class="bg-[#161b22] border-t border-gray-700 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
+            <p>
+                &copy; 2025 Angel Jones. Built with <span class="text-indigo-400">Tailwind CSS</span>.
+            </p>
+        </div>
+    </footer>
+    <script src="js/script.js" defer></script>
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
                     <p>I am a passionate software developer with a focus on creating beautiful and functional web experiences.</p>
                     <p>My journey into development began with a fascination for how simple lines of code could transform into powerful applications used by millions.</p>
                     <p>When I'm not coding, you can find me exploring new technologies or enjoying a good cup of coffee.</p>
@@ -239,6 +328,7 @@
     <script src="js/script.js" defer></script>
 </body>
 </html>
+
 
 
 
